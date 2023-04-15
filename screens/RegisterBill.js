@@ -17,7 +17,7 @@ import * as MediaLibrary from 'expo-media-library';
 import * as DocumentPicker from 'expo-document-picker';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-const RegisterBill = () => {
+const RegisterBill = ({ navigation }) => {
   const [photos, setPhotos] = useState([]);
   const indexes = [0];
   const onPressRemove = (assetId) => {

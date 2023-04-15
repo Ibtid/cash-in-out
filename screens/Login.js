@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
@@ -40,7 +40,11 @@ const Login = () => {
           keyboardType='numeric'
         />
         <View style={styles.alignLeftButton}>
-          <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate('Home');
+            }}>
             <Text style={{ color: 'white' }}>Login</Text>
           </TouchableOpacity>
         </View>

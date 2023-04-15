@@ -7,12 +7,14 @@ import CashInAmount from './screens/CashInAmount';
 import CashOutAmount from './screens/CashOutAmount';
 import Summary from './screens/Summary';
 import RegisterBill from './screens/RegisterBill';
+import AppNavigation from './navigation/navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <RegisterBill />
-    </View>
+    <SafeAreaProvider>
+      <AppNavigation />
+    </SafeAreaProvider>
   );
 }
 

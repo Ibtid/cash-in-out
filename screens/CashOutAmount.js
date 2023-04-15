@@ -8,7 +8,7 @@ import {
   BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-const CashOutAmount = () => {
+const CashOutAmount = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
@@ -29,7 +29,11 @@ const CashOutAmount = () => {
           keyboardType='numeric'
         />
         <View style={styles.alignLeftButton}>
-          <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate('Summary');
+            }}>
             <Text style={{ color: 'white' }}>Cash Out</Text>
           </TouchableOpacity>
         </View>

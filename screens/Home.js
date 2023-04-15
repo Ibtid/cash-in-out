@@ -11,7 +11,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { colorPalete } from '../styles/color';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
@@ -21,15 +21,27 @@ const Home = () => {
         alignItems: 'flex-start',
       }}>
       <View style={styles.screen}>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('CreateBillAmount');
+          }}>
           <Icon name='cash-register' size={40} color={colorPalete.black} />
           <Text style={{ fontSize: 16 }}>Create Bill</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('CashInAmount');
+          }}>
           <Icon name='cash-plus' size={40} color={colorPalete.black} />
           <Text style={{ fontSize: 16 }}>Cash In</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('CashOutAmount');
+          }}>
           <Icon name='cash-minus' size={40} color={colorPalete.black} />
           <Text style={{ fontSize: 16 }}>Cash out</Text>
         </TouchableOpacity>
