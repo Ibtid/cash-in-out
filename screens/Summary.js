@@ -88,21 +88,45 @@ const Summary = ({ navigation, route }) => {
             </View>
           </View>
         </View>
-
-        <TouchableOpacity
-          onPress={() => {}}
+        <View
           style={{
             display: 'flex',
-            alignItems: 'center',
             flexDirection: 'row',
+            width: '100%',
             marginVertical: 20,
-            width: '50%',
-            padding: 10,
-            backgroundColor: colorPalete.violet,
-            borderRadius: 5,
+            justifyContent: 'space-evenly',
           }}>
-          <Text style={{ textAlign: 'center', width: '100%' }}>Confirm</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ScanNFC');
+            }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'row',
+              width: '40%',
+              padding: 10,
+              backgroundColor: colorPalete.violet,
+              borderRadius: 5,
+            }}>
+            <Text style={{ textAlign: 'center', width: '100%' }}>Scan NFC</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('GenerateQrCode');
+            }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'row',
+              width: '40%',
+              padding: 10,
+              backgroundColor: colorPalete.violet,
+              borderRadius: 5,
+            }}>
+            <Text style={{ textAlign: 'center', width: '100%' }}>QR Code</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );

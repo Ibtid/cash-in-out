@@ -9,6 +9,9 @@ import Summary from '../screens/Summary';
 import CreateBillAmount from '../screens/CreateBillAmount';
 import CashOutAmount from '../screens/CashOutAmount';
 import CashInAmount from '../screens/CashInAmount';
+import ScanNFC from '../screens/ScanNfc';
+import GenerateQRCode from '../screens/GenerateQRCode';
+import QRCode from '../screens/QRCode';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +31,9 @@ const AppNavigation = () => {
         <Stack.Screen name='CreateBillAmount' component={CreateBillAmount} />
         <Stack.Screen name='CashOutAmount' component={CashOutAmount} />
         <Stack.Screen name='CashInAmount' component={CashInAmount} />
+        <Stack.Screen name='ScanNFC' component={ScanNFC} />
+        <Stack.Screen name='GenerateQrCode' component={GenerateQRCode} />
+        <Stack.Screen name='getQRCode' component={QRCode} />
       </Stack.Navigator>
     </NavigationContainer>
   );
