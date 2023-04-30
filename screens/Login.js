@@ -1,3 +1,4 @@
+import { useContext, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,8 +9,27 @@ import {
   BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import dispatch from '../dispatch/dispatch';
+import actions from '../dispatch/actions';
+import ContextStore from '../Context/CotnextStore';
 
 const Login = ({ navigation }) => {
+  const {contextStore, setContextStore} = useContext(ContextStore)
+  const [formData, setFormData] = useState({
+    phoneNumber: "",
+    pinCode: ""
+  })
+  const onClickSubmit = async () => {
+    if(formData.phoneNumber.length !== 11 || formData.pinCode.length !== 5){
+      return ToastAndroid.show("Invalid Length", ToastAndroid.SHORT)
+    }
+    const token = await dispatch(actions.agentLogin, {}, {...formData})
+    const agent = await dispatch(actions.getAgent, {}, {}, token)
+    setContextStore({...contextStore, agent: {
+      ...agent, token
+    }})
+    navigation.navigate('Home');
+  }
   return (
     <SafeAreaView
       style={{
@@ -22,10 +42,11 @@ const Login = ({ navigation }) => {
         <Text style={styles.label}>Phone Number</Text>
         <TextInput
           style={styles.input}
-          secureTextEntry={true}
           // onChangeText={onChangeNumber}
           // value={number}
-          onChangeText={(text) => {}}
+          onChangeText={(text) => {
+            setFormData({...formData, phoneNumber: text})
+          }}
           placeholder='Phone Number'
           keyboardType='numeric'
         />
@@ -35,7 +56,9 @@ const Login = ({ navigation }) => {
           secureTextEntry={true}
           // onChangeText={onChangeNumber}
           // value={number}
-          onChangeText={(text) => {}}
+          onChangeText={(text) => {
+            setFormData({...formData, pinCode: text})
+          }}
           placeholder='Pin Code'
           keyboardType='numeric'
         />
@@ -43,7 +66,7 @@ const Login = ({ navigation }) => {
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
-              navigation.navigate('Home');
+              onClickSubmit()
             }}>
             <Text style={{ color: 'white' }}>Login</Text>
           </TouchableOpacity>

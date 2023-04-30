@@ -12,6 +12,8 @@ import CashInAmount from '../screens/CashInAmount';
 import ScanNFC from '../screens/ScanNfc';
 import GenerateQRCode from '../screens/GenerateQRCode';
 import QRCode from '../screens/QRCode';
+import CashInChooseOption from '../screens/CashInChooseOption';
+import CashInSummary from '../screens/CashInSummary';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +36,8 @@ const AppNavigation = () => {
         <Stack.Screen name='ScanNFC' component={ScanNFC} />
         <Stack.Screen name='GenerateQrCode' component={GenerateQRCode} />
         <Stack.Screen name='getQRCode' component={QRCode} />
+        <Stack.Screen name='CashInChooseOption' component={CashInChooseOption} />
+        <Stack.Screen name='CashInSummary' component={CashInSummary} />
       </Stack.Navigator>
     </NavigationContainer>
   );

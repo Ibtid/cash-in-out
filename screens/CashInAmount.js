@@ -1,3 +1,4 @@
+import { useContext, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,7 +9,11 @@ import {
   BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import ContextStore from '../Context/CotnextStore';
 const CashInAmount = ({ navigation }) => {
+  console.log("Cash In Amount")
+  const {contextStore, setContextStore} = useContext(ContextStore)
+  const [amount, setAmount] = useState("")
   return (
     <SafeAreaView
       style={{
@@ -21,10 +26,9 @@ const CashInAmount = ({ navigation }) => {
         <Text style={styles.label}>Amount</Text>
         <TextInput
           style={styles.input}
-          secureTextEntry={true}
           // onChangeText={onChangeNumber}
           // value={number}
-          onChangeText={(text) => {}}
+          onChangeText={(text) => {setAmount(text)}}
           placeholder='Amount'
           keyboardType='numeric'
         />
@@ -32,7 +36,12 @@ const CashInAmount = ({ navigation }) => {
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
-              navigation.navigate('Summary');
+              console.log(amount)
+              if(!amount || parseFloat(amount) < 50){
+                return ToastAndroid.show("At least 50", ToastAndroid.SHORT)
+              }
+              setContextStore({...contextStore, amount})
+              navigation.navigate('CashInChooseOption');
             }}>
             <Text style={{ color: 'white' }}>Cash In</Text>
           </TouchableOpacity>

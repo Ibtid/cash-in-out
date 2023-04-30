@@ -10,8 +10,12 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colorPalete } from '../styles/color';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useContext } from 'react';
+import ContextStore from '../Context/CotnextStore';
+import { QrCodeMethods } from '../vars/vars';
 
 const Home = ({ navigation }) => {
+  const {contextStore, setContextStore} = useContext(ContextStore)
   return (
     <SafeAreaView
       style={{
@@ -24,6 +28,7 @@ const Home = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
+            setContextStore({...contextStore, type: QrCodeMethods.billPayment})
             navigation.navigate('CreateBillAmount');
           }}>
           <Icon name='cash-register' size={40} color={colorPalete.black} />
@@ -32,6 +37,7 @@ const Home = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
+            setContextStore({...contextStore, type: QrCodeMethods.cashIn})
             navigation.navigate('CashInAmount');
           }}>
           <Icon name='cash-plus' size={40} color={colorPalete.black} />
@@ -40,6 +46,7 @@ const Home = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
+            setContextStore({...contextStore, type: QrCodeMethods.cashOut})
             navigation.navigate('CashOutAmount');
           }}>
           <Icon name='cash-minus' size={40} color={colorPalete.black} />

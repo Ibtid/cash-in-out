@@ -1,5 +1,8 @@
 {
   "expo": {
+    "plugins": [
+      "react-native-nfc-manager"
+    ],
     "name": "CashInOut",
     "slug": "CashInOut",
     "version": "1.0.0",
@@ -21,10 +24,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.NFC"
+      ],
+      "package": "com.hafizsheetab.CashInOut"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6ac52913-03e3-42b9-b99b-795d3e8f612d"
+      }
     }
   }
 }
