@@ -13,18 +13,19 @@ import {
   Button,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colorPalete } from '../styles/color';
-import ContextStore from '../Context/CotnextStore';
+import { colorPalete } from '../../styles/color';
+import ContextStore from '../../Context/CotnextStore';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const CashInSummary = ({ navigation, route }) => {
+const CashOutSummary = ({ navigation, route }) => {
     const{contextStore, setContextStore} = useContext(ContextStore)
     const {user} = route.params
     useEffect(() => {
         if(contextStore.socket){
             contextStore.socket.on("complete", () => {
+              contextStore.socket.disconnect()
                 navigation.reset({
                     index: 0,
                     routes: [
@@ -40,7 +41,6 @@ const CashInSummary = ({ navigation, route }) => {
         }
     },[])
     const onClickConfirm = () => {
-        console.log(contextStore.socket)
         if(contextStore.socket){
             contextStore.socket.emit("confirmation", user._id, contextStore.type, contextStore.amount, "--")
         }
@@ -56,7 +56,7 @@ const CashInSummary = ({ navigation, route }) => {
       }}>
       <View style={{ padding: 20, width: '100%' }}>
         <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20 }}>
-          Summary
+          Cash Out Summary
         </Text>
         <View
           style={{
@@ -80,7 +80,7 @@ const CashInSummary = ({ navigation, route }) => {
               marginLeft: 10,
             }}>
             <View>
-              <Text style={{ fontWeight: 'bold' }}>Cash In</Text>
+              <Text style={{ fontWeight: 'bold' }}>Cash Out</Text>
               <Text style={{ fontSize: 14 }} numberOfLines={1}>
                 From: <Text style={{ fontWeight: 'bold' }}>Agent</Text>
               </Text>
@@ -145,4 +145,4 @@ const CashInSummary = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({});
 
-export default CashInSummary;
+export default CashOutSummary;

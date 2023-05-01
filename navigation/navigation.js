@@ -7,14 +7,18 @@ import Home from '../screens/Home';
 import RegisterBill from '../screens/RegisterBill';
 import Summary from '../screens/Summary';
 import CreateBillAmount from '../screens/CreateBillAmount';
-import CashOutAmount from '../screens/CashOutAmount';
-import CashInAmount from '../screens/CashInAmount';
 import ScanNFC from '../screens/ScanNfc';
 import GenerateQRCode from '../screens/GenerateQRCode';
 import QRCode from '../screens/QRCode';
-import CashInChooseOption from '../screens/CashInChooseOption';
-import CashInSummary from '../screens/CashInSummary';
 
+import CashInAmount from '../screens/CashIn/CashInAmount';
+import CashInChooseOption from '../screens/CashIn/CashInChooseOption';
+import CashInSummary from '../screens/CashIn/CashInSummary';
+import CashOutAmount from '../screens/CashOut/CashOutAmount';
+import CashOutChooseOption from '../screens/CashOut/CashOutChooseOption';
+import CashOutSummary from '../screens/CashOut/CashOutSummary';
+import BillPaymentForm from '../screens/BillPayment/BillPaymentForm';
+import BillPaymentWait from '../screens/BillPayment/BillPaymentWait';
 const Stack = createStackNavigator();
 
 const AppNavigation = () => {
@@ -38,6 +42,10 @@ const AppNavigation = () => {
         <Stack.Screen name='getQRCode' component={QRCode} />
         <Stack.Screen name='CashInChooseOption' component={CashInChooseOption} />
         <Stack.Screen name='CashInSummary' component={CashInSummary} />
+        <Stack.Screen name="CashOutChooseOption" component={CashOutChooseOption}/>
+        <Stack.Screen name='CashOutSummary' component={CashOutSummary} />
+        <Stack.Screen name = "BillPaymentForm" component={BillPaymentForm} />
+        <Stack.Screen name="BillPaymentWait" component={BillPaymentWait} />
       </Stack.Navigator>
     </NavigationContainer>
   );

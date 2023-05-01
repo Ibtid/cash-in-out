@@ -29,7 +29,7 @@ const Home = ({ navigation }) => {
           style={styles.button}
           onPress={() => {
             setContextStore({...contextStore, type: QrCodeMethods.billPayment})
-            navigation.navigate('CreateBillAmount');
+            navigation.navigate('BillPaymentForm');
           }}>
           <Icon name='cash-register' size={40} color={colorPalete.black} />
           <Text style={{ fontSize: 16 }}>Create Bill</Text>

@@ -17,11 +17,11 @@ import { io } from 'socket.io-client';
 import ContextStore from '../Context/CotnextStore';
 import QRCode from 'react-native-qrcode-svg';
 import { QrCodeMethods } from '../vars/vars';
-const QRCodeCustom = ({ navigation }) => {
+const QRCodeCustom = ({ navigation, route }) => {
 
   const {contextStore, setContextStore} = useContext(ContextStore)
   useEffect(() => {
-    if(!contextStore.socket){
+    if(!contextStore.socket || (contextStore.socket && contextStore.socket.disconnected)){
       console.log("Connecting")
       const socket = io("https://mbras.checkmehere.xyz",{
       reconnectionDelayMax: 10000,
@@ -39,6 +39,13 @@ const QRCodeCustom = ({ navigation }) => {
         case QrCodeMethods.cashIn:
           console.log("Navigating to summary")
           return navigation.navigate("CashInSummary", {user})
+          break
+        case QrCodeMethods.cashOut:
+          console.log("Navigating to cash out summary")
+          return navigation.navigate("CashOutSummary", {user})
+        case QrCodeMethods.billPayment:
+          console.log("Navigation to Bill Payment Wait Screen")
+          return navigation.navigate("BillPaymentWait", {user})
       }
       
     })
@@ -80,9 +87,12 @@ const QRCodeCustom = ({ navigation }) => {
       <View style={styles.screen}>
         <View style={styles.button}>
           <TouchableOpacity >
-          <QRCode 
+          {contextStore.type === QrCodeMethods.billPayment ? <QRCode 
+          value={JSON.stringify({method: contextStore.type, amount:contextStore.amount, agentId: contextStore.agent._id, items: contextStore.items, formData: contextStore.formData, reference: "--", entity: contextStore.billPaymentEntity})}
+          /> : <QRCode 
           value={JSON.stringify({method: contextStore.type, amount:contextStore.amount, agentId: contextStore.agent._id})}
-          />
+          />}
+          
           </TouchableOpacity>
         </View>
       </View>

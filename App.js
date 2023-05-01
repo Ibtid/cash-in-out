@@ -1,12 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Login from './screens/Login';
-import Home from './screens/Home';
-import CreateBillAmount from './screens/CreateBillAmount';
-import CashInAmount from './screens/CashInAmount';
-import CashOutAmount from './screens/CashOutAmount';
-import Summary from './screens/Summary';
-import RegisterBill from './screens/RegisterBill';
 import AppNavigation from './navigation/navigation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useEffect, useState } from 'react';
@@ -67,7 +60,10 @@ export default function App() {
     agent: {},
     type: "",
     amount: 0,
-    user: {}
+    user: {},
+    items: [],
+    billPaymentEntity: {paymentForm: []},
+    formData: {}
   })
   return (
     <ContextStore.Provider value={{contextStore, setContextStore}}>

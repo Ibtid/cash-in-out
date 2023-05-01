@@ -13,7 +13,7 @@ import {
   Button,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colorPalete } from '../styles/color';
+import { colorPalete } from '../../styles/color';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;

@@ -18,6 +18,10 @@ const dispatch = async (action, headerParams = {}, body = {}, token = '') => {
             axiosOptions = getAxiosOptions("GET",`${baseUrl}/agent`,body, token)
             response = await axios(axiosOptions)
             return response.data
+          case actions.getBillPaymentEntity:
+            axiosOptions = getAxiosOptions("GET",`${baseUrl}/billpaymententity/getOne`, body, token)
+            response = await axios(axiosOptions)
+            return response.data
         default:
           response = {error: {message: "Invalid Command"}}
           return response

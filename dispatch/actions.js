@@ -1,4 +1,5 @@
 export default {
     agentLogin: "AGENTLOGIN",
-    getAgent: "GETAGENT"
+    getAgent: "GETAGENT",
+    getBillPaymentEntity: "GETBILLPAYMENTENTITY"
 }

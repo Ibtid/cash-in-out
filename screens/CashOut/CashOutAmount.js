@@ -9,8 +9,8 @@ import {
   BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ContextStore from '../Context/CotnextStore';
-const CashInAmount = ({ navigation }) => {
+import ContextStore from '../../Context/CotnextStore';
+const CashOutAmount = ({ navigation }) => {
   console.log("Cash In Amount")
   const {contextStore, setContextStore} = useContext(ContextStore)
   const [amount, setAmount] = useState("")
@@ -23,7 +23,7 @@ const CashInAmount = ({ navigation }) => {
         alignItems: 'flex-start',
       }}>
       <View style={styles.screen}>
-        <Text style={styles.label}>Amount</Text>
+        <Text style={styles.label}>Cash Out Amount</Text>
         <TextInput
           style={styles.input}
           // onChangeText={onChangeNumber}
@@ -41,7 +41,7 @@ const CashInAmount = ({ navigation }) => {
                 return ToastAndroid.show("At least 50", ToastAndroid.SHORT)
               }
               setContextStore({...contextStore, amount})
-              navigation.navigate('CashInChooseOption');
+              navigation.navigate('CashOutChooseOption');
             }}>
             <Text style={{ color: 'white' }}>Cash In</Text>
           </TouchableOpacity>
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CashInAmount;
+export default CashOutAmount;
