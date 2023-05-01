@@ -172,10 +172,19 @@ const BillPaymentForm = ({ navigation }) => {
               <Text style={styles.label}>{item.qty}</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={styles.label}>{item.price}</Text>
+              <Text style={styles.label}>{item.price * item.qty}</Text>
             </View>
           </View>
         ))}
+        <View style={styles.alignLeftButton}>
+          <Text style={{ fontSize: 20, marginTop: 20, marginBottom: 20 }}>
+            Total:
+            {items.reduce(
+              (accumulator, item) => accumulator + item.price * item.qty,
+              0
+            )}
+          </Text>
+        </View>
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
@@ -320,6 +329,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'center',
+    borderTopWidth: 1,
+    marginTop: 20,
   },
   button: {
     marginVertical: 12,
