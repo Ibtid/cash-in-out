@@ -11,6 +11,7 @@ const dispatch = async (action, headerParams = {}, body = {}, token = '') => {
     let response = {};
     switch (action) {
         case actions.agentLogin:
+            console.log("Trying to login")
             axiosOptions = getAxiosOptions("POST", `${baseUrl}/agent`, body, token)
             response = await axios(axiosOptions)
             return response.data

@@ -88,8 +88,10 @@ const QRCodeCustom = ({ navigation, route }) => {
         <View style={styles.button}>
           <TouchableOpacity >
           {contextStore.type === QrCodeMethods.billPayment ? <QRCode 
+          size={200}
           value={JSON.stringify({method: contextStore.type, amount:contextStore.amount, agentId: contextStore.agent._id, items: contextStore.items, formData: contextStore.formData, reference: "--", entity: contextStore.billPaymentEntity})}
           /> : <QRCode 
+          size={200}
           value={JSON.stringify({method: contextStore.type, amount:contextStore.amount, agentId: contextStore.agent._id})}
           />}
           

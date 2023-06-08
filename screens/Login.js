@@ -20,6 +20,7 @@ const Login = ({ navigation }) => {
     pinCode: ""
   })
   const onClickSubmit = async () => {
+    console.log("Login")
     if(formData.phoneNumber.length !== 11 || formData.pinCode.length !== 5){
       return ToastAndroid.show("Invalid Length", ToastAndroid.SHORT)
     }

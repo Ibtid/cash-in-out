@@ -198,7 +198,9 @@ const BillPaymentForm = ({ navigation }) => {
             setContextStore({ ...contextStore, amount, items, formData });
             navigation.navigate('CashInChooseOption');
           }}>
-          <Text style={{ color: 'white' }}>Create Bill</Text>
+          <Text style={{ color: 'white' }}
+          
+          >Create Bill</Text>
         </TouchableOpacity>
       </ScrollView>
       {/* <Text>{contextStore?.billPaymentEntity?.name}</Text>
