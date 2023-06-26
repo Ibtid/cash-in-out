@@ -2,7 +2,7 @@ import actions from './actions';
 import axios from 'axios';
 // const baseUrl = 'https://secret-dawn-63355.herokuapp.com';
 // const baseUrl = 'http://192.168.0.109:7000';
-export const baseUrl = "https://mbra.checkmehere.xyz"
+export const baseUrl = "http://120.50.6.183:8000"
 // const baseUrl = 'http://localhost:5000';
 
 const dispatch = async (action, headerParams = {}, body = {}, token = '') => {
