@@ -23,7 +23,7 @@ const QRCodeCustom = ({ navigation, route }) => {
   useEffect(() => {
     if(!contextStore.socket || (contextStore.socket && contextStore.socket.disconnected)){
       console.log("Connecting")
-      const socket = io("http://120.50.6.183:8001",{
+      const socket = io("https://sa.koridigital.com",{
       reconnectionDelayMax: 10000,
       auth: {
         jwtToken: contextStore.agent.token
